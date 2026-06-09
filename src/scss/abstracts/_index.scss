@@ -1,0 +1,7 @@
+// =============================================================
+// abstracts (barrel) — `@use '../abstracts' as *;` from any partial
+// to get variables, functions and mixins in one import.
+// =============================================================
+@forward 'variables';
+@forward 'functions';
+@forward 'mixins';

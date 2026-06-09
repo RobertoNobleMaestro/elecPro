@@ -1,0 +1,31 @@
+// =============================================================
+// abstracts/variables
+// Compile-time SCSS values (cannot live in CSS custom properties:
+// breakpoints used in media queries, z-index map, layout limits).
+// Runtime design tokens (colors, spacing, etc.) live in base/_root.scss
+// as CSS custom properties so they can be themed at runtime.
+// =============================================================
+
+// --- Breakpoints (mobile-first, min-width) -------------------
+$breakpoints: (
+  'sm': 30em,   // 480px
+  'md': 48em,   // 768px
+  'lg': 64em,   // 1024px
+  'xl': 80em,   // 1280px
+);
+
+// --- Z-index layers (single source of truth, no magic numbers)
+$z-layers: (
+  'base': 1,
+  'decor': 5,
+  'sticky': 100,
+  'header': 300,
+  'overlay': 400,
+  'drawer': 450,
+  'floating': 500,
+  'toast': 700,
+);
+
+// --- Layout --------------------------------------------------
+$container-max: 82.5rem;   // 1320px — wider so the header nav stays on one line
+$container-pad: 1.25rem;   // 20px gutter

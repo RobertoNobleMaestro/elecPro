@@ -1,0 +1,34 @@
+// =============================================================
+// ELEC PRO — main stylesheet (7-1 architecture)
+// Build:  npm run build:css   |   Watch: npm run watch:css
+// =============================================================
+
+// 1) Abstracts — definitions only, no CSS output
+@use 'abstracts';
+
+// 2) Base — reset, tokens, typography, globals, a11y
+@use 'base/reset';
+@use 'base/root';
+@use 'base/typography';
+@use 'base/globals';
+@use 'base/a11y';
+
+// 3) Layout
+@use 'layout/header';
+@use 'layout/footer';
+
+// 4) Components
+@use 'components/button';
+@use 'components/badge';
+@use 'components/section-heading';
+@use 'components/hero';
+@use 'components/service-card';
+@use 'components/feature';
+@use 'components/cta-band';
+@use 'components/review-card';
+@use 'components/form';
+@use 'components/floating';
+@use 'components/toast';
+
+// 5) Pages
+@use 'pages/home';

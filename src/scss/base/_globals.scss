@@ -1,0 +1,59 @@
+// =============================================================
+// base/globals — shared helpers & layout primitives
+// =============================================================
+@use '../abstracts' as *;
+
+.container {
+  @include container;
+}
+
+// Default sprite-icon sizing (component rules targeting `svg` override this).
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+// Lock scroll when the mobile drawer / modal is open.
+.is-locked {
+  overflow: hidden;
+  touch-action: none;
+}
+
+// Generic decorative element, hidden from AT.
+[aria-hidden='true'] {
+  pointer-events: none;
+}
+
+// Reveal-on-scroll. Gated behind `.js` so that without JavaScript (or before
+// it runs) all content stays visible — progressive enhancement, not a gate.
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow);
+  will-change: opacity, transform;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+// Stagger helper (applied inline via --i)
+.js .reveal[style*='--i'] {
+  transition-delay: calc(var(--i) * 70ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

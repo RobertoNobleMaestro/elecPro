@@ -1,0 +1,180 @@
+// =============================================================
+// components/button — 5 variants + sizes + states
+// =============================================================
+@use '../abstracts' as *;
+
+.btn {
+  --btn-bg: var(--color-yellow);
+  --btn-fg: var(--color-navy-900);
+  --btn-bd: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 0.85rem 1.4rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--btn-bd);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
+}
+
+// Two-line button label (e.g. "LLAMAR AHORA / 600 123 456")
+.btn__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.15;
+}
+
+.btn__stack small {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.btn__stack strong {
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+// --- Variants ----------------------------------------------
+.btn--primary {
+  --btn-bg: var(--color-yellow);
+  --btn-fg: var(--color-navy-900);
+  box-shadow: var(--shadow-yellow);
+}
+
+.btn--primary:hover {
+  --btn-bg: var(--color-yellow-600);
+  box-shadow: 0 5px 14px rgba(245, 180, 0, 0.28);
+}
+
+.btn--dark {
+  --btn-bg: var(--color-navy-800);
+  --btn-fg: var(--color-white);
+}
+
+.btn--dark:hover {
+  --btn-bg: var(--color-navy-700);
+}
+
+.btn--whatsapp {
+  --btn-bg: var(--color-whatsapp);
+  --btn-fg: #ffffff;
+}
+
+.btn--whatsapp:hover {
+  --btn-bg: var(--color-whatsapp-600);
+}
+
+.btn--white {
+  --btn-bg: var(--color-white);
+  --btn-fg: var(--color-navy-800);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--white:hover {
+  --btn-bg: var(--color-surface-2);
+}
+
+// Outline that adapts to dark surfaces
+.btn--outline {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-white);
+  --btn-bd: rgba(255, 255, 255, 0.45);
+}
+
+.btn--outline:hover {
+  --btn-bg: rgba(255, 255, 255, 0.1);
+  --btn-bd: var(--color-white);
+}
+
+// Outline for light backgrounds
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-text);
+  --btn-bd: var(--color-border);
+}
+
+.btn--ghost:hover {
+  --btn-bg: var(--color-surface-2);
+  --btn-bd: var(--color-text-muted);
+}
+
+// --- Sizes & modifiers -------------------------------------
+.btn--lg {
+  padding: 1rem 1.6rem;
+  font-size: 1rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+// Compact pill used in the header
+.btn--pill {
+  border-radius: var(--radius-pill);
+  padding: 0.6rem 1.1rem;
+}
+
+// Loading state
+.btn.is-loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.btn.is-loading::after {
+  content: '';
+  position: absolute;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2.5px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  color: var(--btn-fg);
+  animation: btn-spin 0.7s linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

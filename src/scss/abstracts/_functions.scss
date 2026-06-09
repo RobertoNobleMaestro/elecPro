@@ -1,0 +1,22 @@
+// =============================================================
+// abstracts/functions
+// =============================================================
+@use 'sass:map';
+@use 'variables' as *;
+
+/// Safely read a z-index layer by name.
+/// @example z-index: z('header');
+@function z($layer) {
+  @if not map.has-key($z-layers, $layer) {
+    @error 'z(): unknown layer "#{$layer}". Available: #{map.keys($z-layers)}.';
+  }
+  @return map.get($z-layers, $layer);
+}
+
+/// Read a breakpoint value by name.
+@function bp($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error 'bp(): unknown breakpoint "#{$name}".';
+  }
+  @return map.get($breakpoints, $name);
+}

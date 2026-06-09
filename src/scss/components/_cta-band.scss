@@ -1,0 +1,67 @@
+// =============================================================
+// components/cta-band — yellow emergency strip
+// =============================================================
+@use '../abstracts' as *;
+
+.cta-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: clamp(1.5rem, 1rem + 2.5vw, 2.25rem);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(100deg, var(--color-yellow), var(--color-yellow-600));
+  color: var(--color-navy-900);
+  box-shadow: var(--shadow);
+}
+
+.cta-band__text {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.cta-band__icon {
+  @include flex-center;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy-900);
+  color: var(--color-yellow);
+}
+
+.cta-band__icon svg {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.cta-band__title {
+  font-size: clamp(1.15rem, 1rem + 1vw, 1.5rem);
+  font-weight: 800;
+  color: var(--color-navy-900);
+}
+
+.cta-band__sub {
+  font-size: var(--fs-sm);
+  color: color-mix(in srgb, var(--color-navy-900) 80%, transparent);
+}
+
+.cta-band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@include respond-max('md') {
+  .cta-band {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+  }
+
+  .cta-band__actions .btn {
+    flex: 1;
+  }
+}

@@ -1,0 +1,36 @@
+// =============================================================
+// base/a11y — accessibility helpers & global focus styles
+// =============================================================
+@use '../abstracts' as *;
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+// Skip link: hidden until focused.
+.skip-link {
+  position: absolute;
+  inset-inline-start: var(--space-4);
+  top: -100%;
+  z-index: z('toast');
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-yellow);
+  color: var(--color-navy-900);
+  font-weight: 700;
+  border-radius: var(--radius);
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+}
+
+// Visible focus only for keyboard users.
+:focus-visible {
+  @include focus-ring;
+  border-radius: var(--radius-sm);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}

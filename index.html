@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ELEC PRO · Boletines eléctricos y urgencias 24h en Barcelona</title>
+    <meta
+      name="description"
+      content="Electricistas autorizados en Barcelona. Boletines eléctricos (CIE), instalaciones, urgencias 24h, cuadros eléctricos y altas de luz. Servicio rápido, seguro y profesional. Presupuesto sin compromiso."
+    />
+    <meta name="theme-color" content="#0c2545" />
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ELEC PRO · Electricistas autorizados en Barcelona" />
+    <meta
+      property="og:description"
+      content="Boletines eléctricos, instalaciones y urgencias 24h. Rápidos, profesionales y de confianza."
+    />
+    <meta property="og:image" content="assets/img/hero-panel.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="dist/css/main.css" />
+
+    <!-- Mark JS as available so reveal animations can hide content safely. -->
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+
+    <!-- LocalBusiness structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Electrician",
+        "name": "ELEC PRO",
+        "image": "assets/img/hero-panel.svg",
+        "telephone": "+34600123456",
+        "email": "info@elecpro.com",
+        "areaServed": "Barcelona",
+        "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "120" }
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- ============================ SVG icon sprite ============================ -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <!-- filled -->
+        <symbol id="i-bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.26 6.6.5-5 4.3 1.5 6.44L12 16.9 5.99 19.5l1.5-6.44-5-4.3 6.6-.5L12 2z"/></symbol>
+        <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.02zM12.04 20.15a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.25 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></symbol>
+        <symbol id="i-facebook" viewBox="0 0 24 24" fill="currentColor"><path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+
+        <!-- stroked -->
+        <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+        <symbol id="i-badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></symbol>
+        <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 13h6M9 17h4"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+        <symbol id="i-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+        <symbol id="i-doc-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></symbol>
+        <symbol id="i-bolt-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m13 7-4 6h3l-1 4 4-6h-3z"/></symbol>
+        <symbol id="i-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 5.5a5 5 0 0 1-10 0z"/><path d="M9 8V3M15 8V3M12 18.5V22"/></symbol>
+        <symbol id="i-warning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.3 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.3a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+        <symbol id="i-panel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7v4M12 7v4M16 7v4M7 16h10"/></symbol>
+        <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></symbol>
+        <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+        <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+        <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="m8.5 12.5-1.5 8 5-3 5 3-1.5-8"/></symbol>
+        <symbol id="i-euro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 7a7 7 0 1 0 0 10"/><path d="M5 10h7M5 14h7"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+        <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+      </defs>
+    </svg>
+
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <!-- ================================ HEADER ================================ -->
+    <header class="header" data-header>
+      <div class="header__inner">
+        <a class="brand" href="#inicio" aria-label="ELEC PRO, inicio">
+          <span class="brand__mark"><svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg></span>
+          <span class="brand__text">
+            <span class="brand__name">ELEC <b>PRO</b></span>
+            <span class="brand__tag">Instalaciones eléctricas</span>
+          </span>
+        </a>
+
+        <nav class="nav" id="primary-nav" data-nav aria-label="Navegación principal">
+          <ul class="nav__list" role="list">
+            <li><a class="nav__link" href="#inicio" data-spy>Inicio</a></li>
+            <li><a class="nav__link" href="#servicios" data-spy>Servicios</a></li>
+            <li><a class="nav__link" href="#urgencias" data-spy>Urgencias 24h</a></li>
+            <li><a class="nav__link" href="#nosotros" data-spy>Sobre nosotros</a></li>
+            <li><a class="nav__link" href="#opiniones" data-spy>Opiniones</a></li>
+            <li><a class="nav__link" href="#contacto" data-spy>Contacto</a></li>
+          </ul>
+          <a class="btn btn--primary btn--pill nav__cta" href="tel:+34600123456">
+            <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+            600 123 456
+          </a>
+        </nav>
+
+        <div class="header__actions">
+          <a class="btn btn--primary btn--pill btn--call-desktop" href="tel:+34600123456">
+            <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+            600 123 456
+          </a>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            data-nav-toggle
+            aria-controls="primary-nav"
+            aria-expanded="false"
+            aria-label="Abrir menú"
+          >
+            <svg class="icon icon-open" aria-hidden="true"><use href="#i-menu"></use></svg>
+            <svg class="icon icon-close" aria-hidden="true"><use href="#i-close"></use></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
+
+    <main id="main">
+      <!-- ================================ HERO ================================ -->
+      <section class="hero" id="inicio">
+        <div class="hero__inner">
+          <div class="hero__content">
+            <span class="eyebrow eyebrow--pill eyebrow--on-dark reveal">
+              <svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg>
+              Electricistas autorizados
+            </span>
+
+            <h1 class="hero__title reveal" style="--i: 1">
+              Boletines eléctricos<br />y <b>urgencias 24h</b>
+            </h1>
+
+            <p class="hero__lead reveal" style="--i: 2">
+              Servicio rápido, seguro y profesional en Barcelona y alrededores.
+              Tramitamos todo por ti, sin complicaciones.
+            </p>
+
+            <ul class="trust-list hero__trust reveal" role="list" style="--i: 3">
+              <li class="trust">
+                <svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+                Instaladores autorizados
+              </li>
+              <li class="trust">
+                <svg class="icon" aria-hidden="true"><use href="#i-clipboard"></use></svg>
+                Presupuestos sin compromiso
+              </li>
+              <li class="trust">
+                <svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg>
+                Atención inmediata 24/7
+              </li>
+            </ul>
+
+            <div class="hero__actions reveal" style="--i: 4">
+              <a class="btn btn--primary btn--lg" href="tel:+34600123456">
+                <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+                <span class="btn__stack"><small>Llamar ahora</small><strong>600 123 456</strong></span>
+              </a>
+              <a
+                class="btn btn--whatsapp btn--lg"
+                href="https://wa.me/34600123456?text=Hola,%20necesito%20información%20sobre%20sus%20servicios%20eléctricos"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+                <span class="btn__stack"><small>WhatsApp</small><strong>Respuesta inmediata</strong></span>
+              </a>
+            </div>
+
+            <p class="hero__location reveal" style="--i: 5">
+              <svg class="icon" aria-hidden="true"><use href="#i-location"></use></svg>
+              Barcelona y alrededores
+            </p>
+          </div>
+
+          <div class="hero__media reveal" style="--i: 2">
+            <figure class="hero__figure">
+              <img
+                src="assets/img/hero-panel.svg"
+                width="800"
+                height="600"
+                alt="Electricista autorizado revisando los magnetotérmicos de un cuadro eléctrico"
+              />
+            </figure>
+            <div class="hero__card">
+              <span class="hero__card-icon"><svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg></span>
+              <div class="hero__card-text">
+                <span class="hero__card-eyebrow">Urgencias eléctricas</span>
+                <span class="hero__card-title">24 HORAS</span>
+                <span class="hero__card-sub">365 días al año</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== SERVICIOS ============================== -->
+      <section class="section section--alt" id="servicios">
+        <div class="container">
+          <header class="section-heading reveal">
+            <span class="eyebrow">Nuestros servicios</span>
+            <h2 class="section-heading__title">Soluciones eléctricas para tu hogar o negocio</h2>
+            <p class="section-heading__sub">
+              Todo lo que necesitas, de la avería urgente al certificado oficial, con un único equipo de confianza.
+            </p>
+          </header>
+
+          <div class="services__grid">
+            <a class="service-card reveal" href="#contacto" style="--i: 0">
+              <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc-check"></use></svg></span>
+              <h3 class="service-card__title">Boletines eléctricos</h3>
+              <p class="service-card__text">Certificados oficiales (CIE) para viviendas y locales, tramitados con la compañía.</p>
+              <span class="service-card__arrow">Solicitar <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+            </a>
+
+            <a class="service-card reveal" href="#urgencias" style="--i: 1">
+              <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-bolt-circle"></use></svg></span>
+              <h3 class="service-card__title">Urgencias eléctricas 24h</h3>
+              <p class="service-card__text">Atención inmediata ante cualquier avería, los 365 días del año.</p>
+              <span class="service-card__arrow">Solicitar <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+            </a>
+
+            <a class="service-card reveal" href="#contacto" style="--i: 2">
+              <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-plug"></use></svg></span>
+              <h3 class="service-card__title">Instalaciones eléctricas</h3>
+              <p class="service-card__text">Instalaciones nuevas y reformas con materiales de primera calidad.</p>
+              <span class="service-card__arrow">Solicitar <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+            </a>
+
+            <a class="service-card reveal" href="#contacto" style="--i: 3">
+              <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-warning"></use></svg></span>
+              <h3 class="service-card__title">Averías y cortocircuitos</h3>
+              <p class="service-card__text">Detectamos y solucionamos cualquier fallo eléctrico con garantía.</p>
+              <span class="service-card__arrow">Solicitar <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+            </a>
+
+            <a class="service-card reveal" href="#contacto" style="--i: 4">
+              <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-panel"></use></svg></span>
+              <h3 class="service-card__title">Cuadros eléctricos</h3>
+              <p class="service-card__text">Cambio, reparación y actualización de cuadros a la normativa vigente.</p>
+              <span class="service-card__arrow">Solicitar <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+            </a>
+
+            <a class="service-card reveal" href="#contacto" style="--i: 5">
+              <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-bulb"></use></svg></span>
+              <h3 class="service-card__title">Altas de luz</h3>
+              <p class="service-card__text">Gestionamos el alta del suministro eléctrico y los cambios de potencia.</p>
+              <span class="service-card__arrow">Solicitar <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
+            </a>
+          </div>
+
+          <!-- Trust strip -->
+          <div class="proof">
+            <ul class="proof__list reveal" role="list">
+              <li class="proof__item"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> Profesionales cualificados</li>
+              <li class="proof__item"><svg class="icon" aria-hidden="true"><use href="#i-award"></use></svg> Trabajos garantizados</li>
+              <li class="proof__item"><svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg> Rapidez y eficacia</li>
+              <li class="proof__item"><svg class="icon" aria-hidden="true"><use href="#i-euro"></use></svg> Precios claros sin sorpresas</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== NOSOTROS ============================== -->
+      <section class="section" id="nosotros">
+        <div class="band">
+          <div class="why reveal">
+            <header class="section-heading section-heading--on-dark">
+              <span class="eyebrow eyebrow--on-dark">¿Por qué elegirnos?</span>
+              <h2 class="section-heading__title">Profesionales de confianza</h2>
+            </header>
+
+            <div class="why__grid">
+              <div class="feature">
+                <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg></span>
+                <h3 class="feature__title">Electricistas autorizados</h3>
+                <p class="feature__text">Nº de instalador BA-12345</p>
+              </div>
+              <div class="feature">
+                <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-award"></use></svg></span>
+                <h3 class="feature__title">Experiencia</h3>
+                <p class="feature__text">Más de 10 años en el sector</p>
+              </div>
+              <div class="feature">
+                <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg></span>
+                <h3 class="feature__title">Rapidez</h3>
+                <p class="feature__text">Llegamos rápido, solucionamos antes</p>
+              </div>
+              <div class="feature">
+                <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-badge-check"></use></svg></span>
+                <h3 class="feature__title">Garantía</h3>
+                <p class="feature__text">Todos nuestros trabajos con garantía</p>
+              </div>
+              <div class="feature">
+                <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-euro"></use></svg></span>
+                <h3 class="feature__title">Transparencia</h3>
+                <p class="feature__text">Precios claros y sin sorpresas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================== CTA / URGENCIAS =========================== -->
+      <section class="section" id="urgencias" style="padding-top: 0">
+        <div class="band">
+          <div class="cta-band reveal">
+            <div class="cta-band__text">
+              <span class="cta-band__icon"><svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg></span>
+              <div>
+                <p class="cta-band__title">¿Tienes una emergencia eléctrica?</p>
+                <p class="cta-band__sub">Estamos disponibles 24 horas, 365 días al año.</p>
+              </div>
+            </div>
+            <div class="cta-band__actions">
+              <a class="btn btn--dark btn--lg" href="tel:+34600123456">
+                <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg> 600 123 456
+              </a>
+              <a
+                class="btn btn--whatsapp btn--lg"
+                href="https://wa.me/34600123456?text=Hola,%20tengo%20una%20urgencia%20eléctrica"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg> WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== OPINIONES + CONTACTO ====================== -->
+      <section class="section section--alt" id="opiniones">
+        <div class="contact__grid">
+          <!-- Reviews -->
+          <div class="contact__reviews">
+            <div class="reviews__head reveal">
+              <div>
+                <h2>Opiniones de clientes</h2>
+              </div>
+              <div class="rating">
+                <svg class="rating__google" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M21.6 12.2c0-.6-.1-1.2-.2-1.8H12v3.4h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.1z"/>
+                  <path fill="#34A853" d="M12 22c2.7 0 5-1 6.6-2.6l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.7-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/>
+                  <path fill="#FBBC05" d="M6.4 13.8a6 6 0 0 1 0-3.6V7.6H3.1a10 10 0 0 0 0 8.8l3.3-2.6z"/>
+                  <path fill="#EA4335" d="M12 6.3c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.6l3.3 2.6C7.2 8 9.4 6.3 12 6.3z"/>
+                </svg>
+                <span class="rating__score">4,9</span>
+                <span class="rating__meta">
+                  <span class="rating__stars" role="img" aria-label="4,9 de 5 estrellas">
+                    <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                    <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                    <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                    <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                    <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                  </span>
+                  <span class="rating__count">Más de 120 opiniones reales</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="reviews__viewport">
+              <ul class="reviews__track" role="list" data-reviews-track>
+                <li class="review-card reveal">
+                  <div class="review-card__top">
+                    <span class="review-card__stars" role="img" aria-label="5 de 5 estrellas">
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                    </span>
+                  </div>
+                  <p class="review-card__quote">"Servicio rápido y profesional. Me solucionaron el problema en menos de una hora."</p>
+                  <div class="review-card__author">
+                    <span class="review-card__avatar" aria-hidden="true">LM</span>
+                    <span>
+                      <span class="review-card__name">Laura M.</span>
+                      <span class="review-card__role">Barcelona</span>
+                    </span>
+                  </div>
+                </li>
+
+                <li class="review-card reveal" style="--i: 1">
+                  <div class="review-card__top">
+                    <span class="review-card__stars" role="img" aria-label="5 de 5 estrellas">
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                    </span>
+                  </div>
+                  <p class="review-card__quote">"Muy profesionales y muy atentos. 100% recomendables, repetiré sin dudarlo."</p>
+                  <div class="review-card__author">
+                    <span class="review-card__avatar" aria-hidden="true">CR</span>
+                    <span>
+                      <span class="review-card__name">Carlos R.</span>
+                      <span class="review-card__role">L'Hospitalet</span>
+                    </span>
+                  </div>
+                </li>
+
+                <li class="review-card reveal" style="--i: 2">
+                  <div class="review-card__top">
+                    <span class="review-card__stars" role="img" aria-label="5 de 5 estrellas">
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                      <svg class="icon" aria-hidden="true"><use href="#i-star"></use></svg>
+                    </span>
+                  </div>
+                  <p class="review-card__quote">"Necesitaba el boletín eléctrico urgente y lo gestionaron todo muy rápido."</p>
+                  <div class="review-card__author">
+                    <span class="review-card__avatar" aria-hidden="true">JP</span>
+                    <span>
+                      <span class="review-card__name">Javier P.</span>
+                      <span class="review-card__role">Badalona</span>
+                    </span>
+                  </div>
+                </li>
+              </ul>
+              <div class="reviews__dots" data-reviews-dots aria-hidden="true"></div>
+            </div>
+
+            <p class="reviews__more">
+              <button class="btn btn--ghost" type="button" data-reviews-more>
+                Ver más opiniones <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+              </button>
+            </p>
+          </div>
+
+          <!-- Quote form -->
+          <div class="quote reveal" id="contacto">
+            <h2 class="quote__title">Solicita tu presupuesto</h2>
+            <p class="quote__sub">Rápido, gratuito y sin compromiso. Te respondemos en menos de 24 h.</p>
+
+            <form class="form" data-quote-form novalidate>
+              <div class="form__row">
+                <div class="field">
+                  <label class="field__label" for="f-name">Nombre <span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" id="f-name" name="name" type="text" autocomplete="name" placeholder="Tu nombre" required aria-describedby="e-name" />
+                  <span class="field__error" id="e-name" aria-live="polite"></span>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="f-phone">Teléfono <span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="600 123 456" required aria-describedby="e-phone" />
+                  <span class="field__error" id="e-phone" aria-live="polite"></span>
+                </div>
+              </div>
+
+              <div class="form__row">
+                <div class="field">
+                  <label class="field__label" for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+                  <input class="field__control" id="f-email" name="email" type="email" autocomplete="email" placeholder="tucorreo@email.com" required aria-describedby="e-email" />
+                  <span class="field__error" id="e-email" aria-live="polite"></span>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="f-service">¿Qué servicio necesitas? <span class="req" aria-hidden="true">*</span></label>
+                  <select class="field__control" id="f-service" name="service" required aria-describedby="e-service">
+                    <option value="" selected disabled>Selecciona una opción</option>
+                    <option value="boletin">Boletín eléctrico (CIE)</option>
+                    <option value="urgencia">Urgencia 24h</option>
+                    <option value="instalacion">Instalación eléctrica</option>
+                    <option value="averia">Avería / cortocircuito</option>
+                    <option value="cuadro">Cuadro eléctrico</option>
+                    <option value="alta">Alta de luz</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                  <span class="field__error" id="e-service" aria-live="polite"></span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="f-message">Cuéntanos tu necesidad</label>
+                <textarea class="field__control" id="f-message" name="message" placeholder="Describe brevemente lo que necesitas…"></textarea>
+              </div>
+
+              <label class="form__consent">
+                <input type="checkbox" name="consent" required />
+                <span>He leído y acepto la <a href="#" target="_blank" rel="noopener">política de privacidad</a>.</span>
+              </label>
+              <span class="field__error" id="e-consent" aria-live="polite"></span>
+
+              <button class="btn btn--primary btn--lg btn--block" type="submit">Enviar solicitud</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================================ FOOTER ================================ -->
+    <footer class="footer">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#inicio" aria-label="ELEC PRO, inicio">
+            <span class="brand__mark"><svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg></span>
+            <span class="brand__text">
+              <span class="brand__name">ELEC <b>PRO</b></span>
+              <span class="brand__tag">Instalaciones eléctricas</span>
+            </span>
+          </a>
+          <p class="footer__about">Electricistas autorizados en Barcelona. Calidad, rapidez y seguridad en cada trabajo.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#i-facebook"></use></svg></a>
+            <a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg></a>
+            <a href="https://wa.me/34600123456" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg></a>
+          </div>
+        </div>
+
+        <nav class="footer__col" aria-label="Enlaces rápidos">
+          <h3>Enlaces rápidos</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#urgencias">Urgencias 24h</a></li>
+            <li><a href="#nosotros">Sobre nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer__col" aria-label="Servicios">
+          <h3>Servicios</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="#servicios">Boletines eléctricos</a></li>
+            <li><a href="#urgencias">Urgencias eléctricas</a></li>
+            <li><a href="#servicios">Instalaciones eléctricas</a></li>
+            <li><a href="#servicios">Cuadros eléctricos</a></li>
+            <li><a href="#servicios">Altas de luz</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col">
+          <h3>Contacto</h3>
+          <ul class="footer__contact" role="list">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg><a href="tel:+34600123456">600 123 456</a></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg><a href="mailto:info@elecpro.com">info@elecpro.com</a></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-location"></use></svg> Barcelona y alrededores</li>
+          </ul>
+          <div class="footer__badge">
+            <svg class="icon" aria-hidden="true"><use href="#i-award"></use></svg>
+            <span>
+              <span class="footer__badge-label">Instalador autorizado</span>
+              <span class="footer__badge-code">BA-12345</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© <span data-year>2026</span> ELEC PRO · Todos los derechos reservados.</span>
+        <span><a href="#">Aviso legal</a> · <a href="#">Política de privacidad</a></span>
+      </div>
+    </footer>
+
+    <!-- ============================ FLOATING ACTIONS ============================ -->
+    <div class="fab-stack">
+      <a
+        class="fab fab--whatsapp"
+        href="https://wa.me/34600123456?text=Hola,%20necesito%20información"
+        target="_blank"
+        rel="noopener"
+        aria-label="Escríbenos por WhatsApp"
+      >
+        <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+      </a>
+      <button class="fab fab--top" type="button" data-back-to-top aria-label="Volver arriba">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+      </button>
+    </div>
+
+    <div class="toast-region" role="status" aria-live="polite"></div>
+
+    <script type="module" src="src/js/main.js"></script>
+    <script>
+      if (location.search.includes('probe')) {
+        addEventListener('load', () => setTimeout(() => {
+          const d = document.documentElement;
+          const before = d.scrollWidth;
+          const vp = document.querySelector('.reviews__viewport');
+          vp.style.display = 'none';
+          const withoutReviews = d.scrollWidth;
+          vp.style.display = '';
+          // Now find non-carousel overflow sources.
+          const vw = d.clientWidth;
+          const wide = [];
+          document.querySelectorAll('*').forEach((el) => {
+            if (el.closest('.reviews__track')) return; // skip the carousel cards
+            const r = el.getBoundingClientRect();
+            if (r.right > vw + 1) wide.push({ n: (el.className || el.tagName).toString().slice(0, 26), r: Math.round(r.right) });
+          });
+          wide.sort((a, b) => b.r - a.r);
+          const box = document.createElement('div');
+          box.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#0a0;color:#fff;font:12px monospace;padding:8px;white-space:pre-wrap';
+          box.textContent = `vw=${vw} scrollW=${before} withoutReviews=${withoutReviews}\n` +
+            'non-carousel overflow:\n' + (wide.slice(0, 5).map((x) => `${x.n} right=${x.r}`).join('\n') || 'none');
+          document.body.appendChild(box);
+        }, 600));
+      }
+    </script>
+  </body>
+</html>

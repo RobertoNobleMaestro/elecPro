@@ -1,0 +1,185 @@
+// =============================================================
+// components/hero
+// =============================================================
+@use '../abstracts' as *;
+
+.hero {
+  position: relative;
+  overflow: clip;
+  background:
+    radial-gradient(120% 120% at 85% 0%, rgba(245, 180, 0, 0.12), transparent 55%),
+    linear-gradient(160deg, var(--color-hero-from), var(--color-hero-to));
+  color: var(--color-text-on-dark);
+  isolation: isolate;
+}
+
+// Soft decorative bolt texture (inline data-URI: no extra request)
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 24 24' fill='none' stroke='%23f5b400' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2 3 14h7l-1 8 10-12h-7l1-8z'/%3E%3C/svg%3E");
+  background-size: 16rem;
+  background-repeat: no-repeat;
+  background-position: right -3rem top -2rem;
+  opacity: 0.16;
+  z-index: -1;
+}
+
+.hero__inner {
+  @include container;
+  display: grid;
+  gap: var(--space-7);
+  padding-block: calc(var(--space-7) + 1rem) var(--space-8);
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+
+  @include respond-to('lg') {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--space-8);
+  }
+}
+
+.hero__content {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 36rem;
+}
+
+.hero__title {
+  color: var(--color-white);
+}
+
+.hero__title b {
+  color: var(--color-yellow);
+}
+
+.hero__lead {
+  color: var(--color-text-on-dark-soft);
+  font-size: var(--fs-lead);
+  max-width: 42ch;
+}
+
+.hero__trust {
+  gap: var(--space-4) var(--space-5);
+  color: var(--color-text-on-dark);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.hero__location {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  color: var(--color-text-on-dark-soft);
+}
+
+.hero__location svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--color-yellow);
+}
+
+// --- Media (SVG illustration + floating card) ---------------
+.hero__media {
+  position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 32rem;
+}
+
+.hero__figure {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(150deg, #1b3a5e, #0c2545);
+}
+
+.hero__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Floating "24h" card overlapping the image
+.hero__card {
+  position: absolute;
+  right: clamp(0.75rem, -1rem + 5vw, 1.25rem);
+  bottom: clamp(0.75rem, -1rem + 5vw, 1.25rem);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-white);
+  color: var(--color-navy-900);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  max-width: 16rem;
+}
+
+.hero__card-icon {
+  @include flex-center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-yellow);
+  color: var(--color-navy-900);
+  flex-shrink: 0;
+}
+
+.hero__card-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+// Stack the three lines (eyebrow / big title / sub) — they are <span>s.
+.hero__card-text {
+  display: grid;
+  gap: 2px;
+}
+
+.hero__card-eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #5b6678;
+}
+
+.hero__card-title {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.4rem;
+  line-height: 1.05;
+  color: var(--color-navy-900);
+}
+
+.hero__card-sub {
+  display: block;
+  font-size: 0.72rem;
+  color: #5b6678;
+}
+
+// On the narrowest screens, pin the floating card on BOTH sides so it can
+// never overflow the figure / viewport (text was getting clipped at the edge).
+@include respond-max('sm') {
+  .hero__card {
+    left: var(--space-3);
+    right: var(--space-3);
+    bottom: var(--space-3);
+    max-width: none;
+    justify-content: flex-start;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .hero__card-title {
+    font-size: 1.25rem;
+  }
+}

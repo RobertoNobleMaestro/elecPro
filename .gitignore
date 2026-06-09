@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+*.log
+.cache/
+.qodo/
+
+# Compiled CSS is committed so the site works without a build step.
+# Remove the line below if you prefer to keep dist/ out of version control.
+# dist/

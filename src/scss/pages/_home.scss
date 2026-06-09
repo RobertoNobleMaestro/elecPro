@@ -1,0 +1,82 @@
+// =============================================================
+// pages/home — section-level layout & backgrounds
+// =============================================================
+@use '../abstracts' as *;
+
+// Alternating section backgrounds
+.section--alt {
+  background: var(--color-surface);
+}
+
+// "Por qué elegirnos" + CTA share a light wrapper
+.band {
+  @include container;
+}
+
+.band + .band {
+  margin-top: var(--space-6);
+}
+
+// Two-column reviews + quote form
+.contact__grid {
+  @include container;
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+  // minmax(0, …) instead of the implicit `auto`/`fr` (which resolve to a min
+  // of max-content) so the column can shrink and the reviews carousel scrolls
+  // internally instead of blowing out the page width.
+  grid-template-columns: minmax(0, 1fr);
+
+  @include respond-to('lg') {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--space-7);
+  }
+}
+
+// Pull the quote form up a touch on desktop for visual balance.
+// min-width: 0 lets this grid item shrink so the inner reviews carousel
+// (overflow-x: auto) scrolls internally instead of widening the whole page.
+.contact__reviews {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+// Trust strip under the services (from the light variant)
+.proof {
+  @include container;
+  margin-top: var(--space-6);
+}
+
+.proof__list {
+  @include reset-list;
+  @include card;
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(2, 1fr);
+  padding: var(--space-5) var(--space-6);
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.proof__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+
+.proof__item svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--color-yellow-600);
+  flex-shrink: 0;
+}
+
+[data-theme='dark'] .proof__item svg {
+  color: var(--color-yellow);
+}

@@ -1,0 +1,186 @@
+// =============================================================
+// components/review-card + Google rating
+// =============================================================
+@use '../abstracts' as *;
+
+.reviews__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+// --- Rating summary ----------------------------------------
+.rating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.rating__score {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.rating__meta {
+  display: grid;
+  gap: 2px;
+}
+
+.rating__stars {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--color-star);
+}
+
+.rating__stars svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.rating__count {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.rating__google {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+// --- Track (carousel on mobile, grid on desktop) -----------
+.reviews__viewport {
+  overflow: hidden;
+  min-width: 0; // contain the horizontal carousel within its column
+}
+
+.reviews__track {
+  @include reset-list;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 85%;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: var(--space-1);
+  padding-bottom: var(--space-3);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.reviews__track::-webkit-scrollbar {
+  display: none;
+}
+
+@include respond-to('md') {
+  .reviews__track {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-columns: auto;
+    overflow: visible;
+  }
+}
+
+.review-card {
+  scroll-snap-align: start;
+  @include card;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  height: 100%;
+}
+
+.review-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.review-card__stars {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--color-star);
+}
+
+.review-card__stars svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.review-card__quote {
+  font-size: var(--fs-sm);
+  color: var(--color-text-soft);
+  line-height: var(--lh-base);
+}
+
+.review-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: auto;
+}
+
+.review-card__avatar {
+  @include flex-center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-navy-700);
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  flex-shrink: 0;
+}
+
+.review-card__name {
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+
+.review-card__role {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+// --- Carousel dots (mobile only) ----------------------------
+.reviews__dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.reviews__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+  transition:
+    width var(--transition),
+    background var(--transition);
+}
+
+.reviews__dot.is-active {
+  width: 22px;
+  background: var(--color-yellow);
+}
+
+@include respond-to('md') {
+  .reviews__dots {
+    display: none;
+  }
+}
+
+.reviews__more {
+  margin-top: var(--space-5);
+  text-align: center;
+
+  @include respond-to('md') {
+    text-align: left;
+  }
+}

@@ -1,0 +1,105 @@
+// =============================================================
+// components/service-card
+// =============================================================
+@use '../abstracts' as *;
+
+.services__grid {
+  @include grid-auto-fit(15rem, var(--space-5));
+}
+
+.service-card {
+  @include card;
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  text-align: left;
+  color: inherit;
+  overflow: hidden;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+// Top accent bar revealed on hover
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--color-yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+a.service-card:hover,
+a.service-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in srgb, var(--color-yellow) 50%, var(--color-border));
+}
+
+a.service-card:hover::before,
+a.service-card:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.service-card__icon {
+  @include flex-center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius);
+  background: var(--color-yellow-100);
+  color: var(--color-yellow-600);
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+[data-theme='dark'] .service-card__icon {
+  background: rgba(245, 180, 0, 0.15);
+  color: var(--color-yellow);
+}
+
+.service-card__icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+a.service-card:hover .service-card__icon {
+  background: var(--color-yellow);
+  color: var(--color-navy-900);
+}
+
+.service-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.service-card__text {
+  font-size: var(--fs-sm);
+  color: var(--color-text-soft);
+  line-height: var(--lh-base);
+}
+
+.service-card__arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  color: var(--color-yellow-600);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+
+.service-card__arrow svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  transition: transform var(--transition);
+}
+
+a.service-card:hover .service-card__arrow svg {
+  transform: translateX(4px);
+}

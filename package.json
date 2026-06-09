@@ -1,0 +1,28 @@
+{
+  "name": "elecpro",
+  "version": "1.0.0",
+  "description": "ELEC PRO — Landing de instalaciones eléctricas, boletines y urgencias 24h. HTML + SCSS (7-1) + JS vanilla.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:css": "sass src/scss/main.scss:dist/css/main.css --style=compressed --no-source-map",
+    "watch:css": "sass --watch src/scss/main.scss:dist/css/main.css --style=expanded",
+    "serve": "serve -l 3000 .",
+    "dev": "concurrently -k -n SASS,WEB -c yellow,cyan \"npm:watch:css\" \"npm:serve\"",
+    "build": "npm run build:css"
+  },
+  "keywords": [
+    "electricista",
+    "boletines-electricos",
+    "landing",
+    "scss",
+    "vanilla-js"
+  ],
+  "author": "ELEC PRO",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "sass": "^1.83.4",
+    "serve": "^14.2.4"
+  }
+}
