@@ -167,19 +167,19 @@
   color: #5b6678;
 }
 
-// On the narrowest screens, pin the floating card on BOTH sides so it can
-// never overflow the figure / viewport (text was getting clipped at the edge).
-@include respond-max('sm') {
+// While the hero is stacked (< lg) the figure is full-width, so give the
+// floating card a comfortable fixed width that always fits inside it and never
+// crowds the text — capped so it can't exceed the figure on small phones.
+@include respond-max('md') {
   .hero__card {
-    left: var(--space-3);
     right: var(--space-3);
     bottom: var(--space-3);
+    width: min(18rem, calc(100% - 2 * var(--space-3)));
     max-width: none;
-    justify-content: flex-start;
     padding: var(--space-3) var(--space-4);
   }
 
   .hero__card-title {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
   }
 }

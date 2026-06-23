@@ -599,31 +599,5 @@
     <div class="toast-region" role="status" aria-live="polite"></div>
 
     <script type="module" src="src/js/main.js"></script>
-    <script>
-      if (location.search.includes('probe')) {
-        addEventListener('load', () => setTimeout(() => {
-          const d = document.documentElement;
-          const before = d.scrollWidth;
-          const vp = document.querySelector('.reviews__viewport');
-          vp.style.display = 'none';
-          const withoutReviews = d.scrollWidth;
-          vp.style.display = '';
-          // Now find non-carousel overflow sources.
-          const vw = d.clientWidth;
-          const wide = [];
-          document.querySelectorAll('*').forEach((el) => {
-            if (el.closest('.reviews__track')) return; // skip the carousel cards
-            const r = el.getBoundingClientRect();
-            if (r.right > vw + 1) wide.push({ n: (el.className || el.tagName).toString().slice(0, 26), r: Math.round(r.right) });
-          });
-          wide.sort((a, b) => b.r - a.r);
-          const box = document.createElement('div');
-          box.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#0a0;color:#fff;font:12px monospace;padding:8px;white-space:pre-wrap';
-          box.textContent = `vw=${vw} scrollW=${before} withoutReviews=${withoutReviews}\n` +
-            'non-carousel overflow:\n' + (wide.slice(0, 5).map((x) => `${x.n} right=${x.r}`).join('\n') || 'none');
-          document.body.appendChild(box);
-        }, 600));
-      }
-    </script>
   </body>
 </html>

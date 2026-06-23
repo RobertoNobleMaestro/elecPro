@@ -15,14 +15,19 @@ $breakpoints: (
 );
 
 // --- Z-index layers (single source of truth, no magic numbers)
+// NOTE: the mobile drawer lives inside the header, so it shares the header's
+// stacking context. The backdrop therefore sits BELOW the header (so it dims
+// the page but never paints over the drawer), while the drawer is lifted above
+// the header's own children.
 $z-layers: (
   'base': 1,
   'decor': 5,
   'sticky': 100,
+  'backdrop': 200,
   'header': 300,
-  'overlay': 400,
   'drawer': 450,
   'floating': 500,
+  'overlay': 600,
   'toast': 700,
 );
 

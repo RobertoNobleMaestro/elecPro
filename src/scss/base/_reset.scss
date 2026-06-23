@@ -18,6 +18,10 @@ html {
   scroll-behavior: smooth;
   // Offset anchor scroll so sticky header never covers the target.
   scroll-padding-top: calc(var(--header-h) + 1rem);
+  // Stop the off-canvas mobile drawer (parked at translateX(100%)) from making
+  // the page horizontally scrollable. `hidden` on the root propagates to the
+  // viewport (and the root stays non-scrolling), so the sticky header survives.
+  overflow-x: hidden;
 }
 
 body {

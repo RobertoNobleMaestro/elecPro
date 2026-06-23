@@ -58,7 +58,7 @@ elecPro/
     └── js/
         ├── main.js            # Arranque: inicializa los módulos
         ├── data/reviews.js    # Mock de opiniones extra ("Ver más")
-        └── modules/           # nav, theme, scrollspy, reveal, reviews, form,
+        └── modules/           # nav, scrollspy, reveal, reviews, form,
                                #   floating, toast
 ```
 
@@ -93,8 +93,8 @@ mágicos hardcodeados** en componentes.
 - **Formulario de presupuesto** con validación en vivo (nombre, teléfono español,
   email, servicio, consentimiento), errores accesibles (`aria-live`,
   `aria-invalid`), estado *loading* y **toast** de éxito.
-- **Modo oscuro** con toggle persistente (`localStorage`) y sin *flash* (se aplica
-  antes del primer pintado).
+- **Tema oscuro** como diseño único (paleta navy + amarillo coherente en todas
+  las secciones).
 - **Botón flotante de WhatsApp** (con pulso) y **volver arriba**.
 - Enlaces `tel:` y `wa.me` reales; foco visible en todo lo interactivo.
 
@@ -121,7 +121,7 @@ mágicos hardcodeados** en componentes.
 
 ## ✨ Mejoras añadidas (libertad creativa)
 
-1. **Modo oscuro** completo con toggle accesible y persistencia.
+1. **Tema oscuro** unificado y coherente en todas las secciones (navy + amarillo).
 2. **Datos estructurados** `schema.org/Electrician` (SEO local) + Open Graph.
 3. **Accesibilidad**: skip‑link, `aria-current`, roles, `aria-live` en errores y
    toasts, focus visible, *focus trap* en el drawer, `prefers-reduced-motion`.

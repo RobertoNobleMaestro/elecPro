@@ -7,13 +7,24 @@
   position: sticky;
   top: 0;
   z-index: z('header');
-  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
-  backdrop-filter: blur(10px);
+  // Solid on mobile. IMPORTANT: no backdrop-filter here — it would make the
+  // header a containing block for the fixed drawer, sizing the drawer to the
+  // header's height instead of the viewport. The blur is added at lg+ only,
+  // where the nav is inline (not a drawer).
+  background: var(--color-surface);
   border-bottom: 1px solid transparent;
   transition:
     box-shadow var(--transition),
     border-color var(--transition),
     background var(--transition);
+}
+
+@include respond-to('lg') {
+  .header {
+    background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 }
 
 // Scrolled state (toggled from JS)
@@ -239,12 +250,14 @@
   }
 }
 
-// Backdrop behind the open drawer
+// Backdrop behind the open drawer. Sits below the header (z 300) so it dims the
+// page content but never covers the drawer, which lives in the header's
+// stacking context. See $z-layers note in abstracts/_variables.scss.
 .nav-backdrop {
   position: fixed;
   inset: 0;
-  z-index: z('overlay');
-  background: rgba(8, 20, 39, 0.5);
+  z-index: z('backdrop');
+  background: rgba(8, 20, 39, 0.6);
   opacity: 0;
   visibility: hidden;
   transition:
