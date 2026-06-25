@@ -1037,6 +1037,10 @@ small {
   color: var(--color-text-on-dark-soft);
   font-size: var(--fs-lead);
   max-width: 42ch;
+  .text_underline{
+    font-weight: 600;
+    color: var(--color-text-on-dark) !important;
+  }
 }
 
 .hero__trust {
