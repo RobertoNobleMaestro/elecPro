@@ -106,8 +106,8 @@ mágicos hardcodeados** en componentes.
   incluye “por qué elegirnos”, formulario y footer). Se integraron elementos de
   la variante clara (tira de confianza bajo los servicios) y la primera imagen
   (LF) se usó solo como referencia de estilo.
-- **Datos de contacto de ejemplo**: teléfono `600 123 456`, email
-  `info@elecpro.com`, instalador `BA‑12345`, zona “Barcelona y alrededores”.
+- **Datos de contacto de ejemplo**: teléfono `642 898 520`, email
+  `boletinesf@gmail.com`, instalador `BA‑12345`, zona “Barcelona y alrededores”.
   Cámbialos en `index.html` (y en los enlaces `tel:`/`wa.me`).
 - El **envío del formulario está simulado** (`setTimeout`). Para producción,
   sustituye el bloque marcado en `src/js/modules/form.js` por un `fetch` a tu
