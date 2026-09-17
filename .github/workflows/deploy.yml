@@ -50,23 +50,22 @@ jobs:
           # Sincronización incremental: la acción guarda un state file en el
           # servidor y en los siguientes deploys solo sube lo que ha cambiado.
           # El .htaccess bloquea los .json, así que no queda expuesto.
-          exclude:
-            # --- Control de versiones y CI ---
-            - '**/.git*'
-            - '**/.git*/**'
-            - '.github/**'
-            # --- Dependencias y build ---
-            - '**/node_modules/**'
-            - 'package.json'
-            - 'package-lock.json'
-            # --- Fuentes que NO van al servidor ---
-            # OJO: solo src/scss. src/js SÍ se publica, el navegador lo carga
-            # como ES Modules desde index.html.
-            - 'src/scss/**'
-            - '**/*.map'
-            # --- Documentación y restos ---
-            - 'README.md'
-            - 'CNAME'
+          # Tiene que ser un string multilínea (bloque "|"), no una lista YAML:
+          # los inputs de with: en Actions solo admiten valores escalares.
+          # OJO: se excluye src/scss, NO src/js. El navegador carga
+          # src/js/main.js como ES Module desde index.html.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            **/node_modules/**
+            package.json
+            package-lock.json
+            src/scss/**
+            **/*.map
+            README.md
+            CNAME
+            .gitattributes
 
       # Comprobación automática tras el deploy.
       # Solo falla si el sitio se ha roto de verdad; lo demás son avisos,
