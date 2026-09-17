@@ -17,13 +17,7 @@ declare(strict_types=1);
 // ---------------------------------------------------------------------------
 
 // A dónde llegan los avisos de nuevas solicitudes.
-//
-// ############################################################
-// #  TEMPORAL: buzón de pruebas, NO el del cliente.          #
-// #  Restaurar boletinesf@gmail.com antes de dar la web por  #
-// #  entregada, o los presupuestos no le llegarán a nadie.   #
-// ############################################################
-const DESTINATARIO = 'betonm2005@gmail.com';
+const DESTINATARIO = 'boletinesf@gmail.com';
 
 // Remitente. TIENE que ser una dirección del propio dominio: si pones un
 // Gmail aquí, Arsys manda un correo que falla SPF y acaba en spam.
