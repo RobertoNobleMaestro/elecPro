@@ -17,6 +17,103 @@
   margin-top: var(--space-6);
 }
 
+// Boletín eléctrico explainer: prose beside the numbered process.
+.guide {
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+
+  @include respond-to('lg') {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: var(--space-7);
+  }
+}
+
+.guide__body {
+  display: grid;
+  gap: var(--space-4);
+  color: var(--color-text-muted);
+  line-height: var(--lh-base);
+}
+
+.guide__body p {
+  margin: 0;
+}
+
+.guide__body strong {
+  color: var(--color-text);
+}
+
+.guide__subtitle {
+  margin: var(--space-2) 0 0;
+  font-size: var(--fs-h3);
+  color: var(--color-text);
+}
+
+.guide__list {
+  @include reset-list;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.guide__list li {
+  position: relative;
+  padding-left: var(--space-5);
+}
+
+// Yellow dash marker instead of a bullet, to match the rest of the UI.
+.guide__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.75rem;
+  height: 2px;
+  background: var(--color-yellow);
+}
+
+.steps {
+  @include reset-list;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.step {
+  @include card;
+  padding: var(--space-5);
+  padding-left: var(--space-7);
+  position: relative;
+}
+
+.step__num {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-5);
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-yellow);
+  color: var(--color-navy-900);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+
+.step__title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-base);
+}
+
+.step__text {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-base);
+}
+
 // Quote form, single column.
 // This used to be a two-column grid with the reviews carousel alongside. With
 // the reviews gone the form is centred and capped: spanning the full container

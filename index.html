@@ -100,6 +100,80 @@
         }
       }
     </script>
+
+    <!-- FAQPage. Refleja literalmente el FAQ visible de la página, que es
+         requisito de Google: el marcado no puede describir contenido que el
+         usuario no ve.
+         Nota: desde 2023 Google limita los resultados enriquecidos de FAQ a
+         sitios oficiales de administración y salud, así que esto no va a
+         pintar el acordeón en los resultados. Se mantiene porque ayuda a
+         Google a entender de qué trata la página; el valor real está en el
+         contenido visible, no en el marcado. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://flotul.es/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es exactamente un boletín eléctrico?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Es el Certificado de Instalación Eléctrica (CIE). Acredita que tu instalación cumple el REBT y es imprescindible para contratar o reactivar el suministro. También lo verás llamado boletín de luz o simplemente CIE: son el mismo documento."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto cuesta un boletín eléctrico?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende de la potencia que haya que certificar, del tipo de inmueble y de si la instalación necesita alguna corrección previa. Revisamos tu caso, te pasamos un presupuesto cerrado y tú decides. La valoración no tiene coste ni compromiso."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tiempo es válido un boletín eléctrico?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "El CIE no caduca por sí mismo, pero las distribuidoras suelen exigir uno con menos de veinte años de antigüedad para tramitar altas o cambios de potencia. Además, determinadas instalaciones están sujetas a inspecciones periódicas obligatorias según su tipo y su potencia."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Puedo dar de alta la luz sin boletín?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Si es un alta nueva, o el suministro ha estado de baja mucho tiempo, no: la comercializadora te va a pedir el certificado antes de tramitar el contrato. Si el suministro está activo y solo cambias de compañía, normalmente no hace falta."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Y si mi instalación no cumple la normativa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No se puede emitir el certificado hasta que se corrija. Te indicamos qué puntos concretos fallan y qué cuesta resolverlos, y decides tú cómo proceder. No emitimos certificados de instalaciones que no cumplen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Me salta el diferencial continuamente, ¿qué puede ser?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Casi siempre es una derivación a tierra: humedad en una caja de registro, un electrodoméstico con fuga o un cable deteriorado. Se localiza midiendo circuito por circuito. Conviene no dejarlo pasar ni forzar el diferencial para que aguante: está saltando precisamente para protegerte."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Trabajáis en toda Barcelona?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Trabajamos en Barcelona ciudad y en el área metropolitana. Si tienes dudas sobre tu municipio, llámanos o escríbenos por WhatsApp y te lo confirmamos al momento."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
@@ -328,6 +402,68 @@
         </div>
       </section>
 
+      <!-- ======================== GUÍA: BOLETÍN ELÉCTRICO ======================== -->
+      <section class="section" id="boletines">
+        <div class="container">
+          <header class="section-heading reveal">
+            <span class="eyebrow">El servicio que más nos piden</span>
+            <h2 class="section-heading__title">Qué es el boletín eléctrico y cuándo lo necesitas</h2>
+          </header>
+
+          <div class="guide">
+            <div class="guide__body reveal">
+              <p>
+                El <strong>boletín eléctrico</strong> es el nombre con el que se conoce popularmente el
+                <strong>Certificado de Instalación Eléctrica (CIE)</strong>: el documento que acredita que una
+                instalación cumple el Reglamento Electrotécnico para Baja Tensión (REBT). Solo puede emitirlo una
+                empresa instaladora autorizada, que además lo registra ante el organismo competente de la
+                comunidad autónoma.
+              </p>
+              <p>
+                Sin él, tu compañía no puede tramitar un alta nueva ni determinados cambios en el suministro. No es
+                un trámite opcional: es lo que garantiza que la instalación de tu casa o tu local es segura.
+              </p>
+
+              <h3 class="guide__subtitle">Lo necesitas si…</h3>
+              <ul class="guide__list" role="list">
+                <li>Contratas la luz por primera vez en una vivienda o un local.</li>
+                <li>Reactivas un suministro que ha estado dado de baja más de doce meses.</li>
+                <li>Aumentas la potencia por encima de lo que admite tu instalación actual.</li>
+                <li>Has hecho una reforma que afecta a la instalación eléctrica.</li>
+                <li>La distribuidora te reclama un certificado actualizado porque el existente es demasiado antiguo.</li>
+              </ul>
+            </div>
+
+            <ol class="steps reveal" role="list">
+              <li class="step">
+                <span class="step__num" aria-hidden="true">1</span>
+                <h3 class="step__title">Revisión</h3>
+                <p class="step__text">
+                  Comprobamos el estado real de la instalación: cuadro y protecciones, secciones de cable, toma de
+                  tierra y diferenciales. Vamos a tu domicilio y la valoración no te cuesta nada.
+                </p>
+              </li>
+              <li class="step">
+                <span class="step__num" aria-hidden="true">2</span>
+                <h3 class="step__title">Adecuación, solo si hace falta</h3>
+                <p class="step__text">
+                  Si algo no cumple, te decimos exactamente qué punto falla y qué cuesta corregirlo antes de seguir
+                  adelante. Decides tú con el precio delante.
+                </p>
+              </li>
+              <li class="step">
+                <span class="step__num" aria-hidden="true">3</span>
+                <h3 class="step__title">Emisión y registro</h3>
+                <p class="step__text">
+                  Emitimos el CIE, lo registramos ante la administración y te lo entregamos listo para presentarlo a
+                  tu comercializadora. Del papeleo nos encargamos nosotros.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
       <!-- ============================== NOSOTROS ============================== -->
       <section class="section" id="nosotros">
         <div class="band">
@@ -393,6 +529,103 @@
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- ================================= FAQ ================================= -->
+      <section class="section" id="faq">
+        <div class="container">
+          <header class="section-heading reveal">
+            <span class="eyebrow">Preguntas frecuentes</span>
+            <h2 class="section-heading__title">Las dudas que nos llegan cada semana</h2>
+          </header>
+
+          <!-- <details>/<summary> nativos: accesibles, sin JavaScript, y el
+               contenido está siempre en el HTML para que Google lo indexe
+               aunque el panel esté cerrado. -->
+          <div class="faq reveal">
+            <details class="faq__item">
+              <summary class="faq__q">¿Qué es exactamente un boletín eléctrico?</summary>
+              <div class="faq__a">
+                <p>
+                  Es el Certificado de Instalación Eléctrica (CIE). Acredita que tu instalación cumple el REBT y es
+                  imprescindible para contratar o reactivar el suministro. También lo verás llamado boletín de luz o
+                  simplemente CIE: son el mismo documento.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__q">¿Cuánto cuesta un boletín eléctrico?</summary>
+              <div class="faq__a">
+                <p>
+                  Depende de la potencia que haya que certificar, del tipo de inmueble y de si la instalación
+                  necesita alguna corrección previa. Por eso no damos un precio genérico: revisamos tu caso, te
+                  pasamos un presupuesto cerrado y tú decides. La valoración no tiene coste ni compromiso.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__q">¿Cuánto tiempo es válido un boletín eléctrico?</summary>
+              <div class="faq__a">
+                <p>
+                  El CIE no caduca por sí mismo, pero las distribuidoras suelen exigir uno con menos de veinte años
+                  de antigüedad para tramitar altas o cambios de potencia. Además, determinadas instalaciones están
+                  sujetas a inspecciones periódicas obligatorias según su tipo y su potencia.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__q">¿Puedo dar de alta la luz sin boletín?</summary>
+              <div class="faq__a">
+                <p>
+                  Si es un alta nueva, o el suministro ha estado de baja mucho tiempo, no: la comercializadora te va
+                  a pedir el certificado antes de tramitar el contrato. Si el suministro está activo y solo cambias
+                  de compañía, normalmente no hace falta.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__q">¿Y si mi instalación no cumple la normativa?</summary>
+              <div class="faq__a">
+                <p>
+                  No se puede emitir el certificado hasta que se corrija. Te indicamos qué puntos concretos fallan y
+                  qué cuesta resolverlos, y decides tú cómo proceder. Lo que no hacemos es emitir certificados de
+                  instalaciones que no cumplen: te estaríamos vendiendo un papel y dejándote el riesgo en casa.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__q">Me salta el diferencial continuamente, ¿qué puede ser?</summary>
+              <div class="faq__a">
+                <p>
+                  Casi siempre es una derivación a tierra: humedad en una caja de registro, un electrodoméstico con
+                  fuga o un cable deteriorado. Se localiza midiendo circuito por circuito. Conviene no dejarlo pasar
+                  ni, sobre todo, forzar el diferencial para que aguante: está saltando precisamente para protegerte.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item">
+              <summary class="faq__q">¿Trabajáis en toda Barcelona?</summary>
+              <div class="faq__a">
+                <p>
+                  Trabajamos en Barcelona ciudad y en el área metropolitana. Si tienes dudas sobre tu municipio,
+                  llámanos o escríbenos por WhatsApp y te lo confirmamos al momento.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <p class="faq__cta reveal">
+            ¿No encuentras tu caso?
+            <a href="#contacto">Cuéntanoslo en el formulario</a> o llámanos al
+            <a href="tel:+34642898520">642 898 520</a>.
+          </p>
         </div>
       </section>
 
