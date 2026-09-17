@@ -40,12 +40,26 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # FTP plano manda la contraseña en texto claro. Si Arsys te da error
-          # de conexión, cambia a "ftp" y avísame, pero prueba ftps primero.
-          protocol: ftps
+          port: 21
+          # FTP plano, no FTPS. Comprobado contra el servidor: su respuesta a
+          # FEAT no incluye AUTH TLS y el puerto 990 está cerrado, así que este
+          # plan de Arsys no soporta FTPS de ninguna forma. Pedir ftps deja la
+          # negociación TLS colgada -> "Timeout (control socket)".
+          #
+          # AVISO: FTP plano manda usuario y contraseña sin cifrar. Es aceptable
+          # solo porque este usuario es exclusivo del deploy y su alcance está
+          # limitado a la raíz web. NO metas aquí credenciales de tu cuenta.
+          #
+          # Mejor opción disponible: el puerto 22 responde OpenSSH 8.0, o sea
+          # que hay SFTP. Requiere que Arsys tenga el acceso SSH habilitado
+          # para tu usuario (se pide/activa desde el panel). Al migrar, esta
+          # acción no sirve: SamKirkland/FTP-Deploy-Action no habla SFTP.
+          protocol: ftp
           local-dir: ./
-          # Raíz web del hosting. En Arsys suele ser "/" pero según el plan
-          # puede ser "/htdocs/" o "/web/". Compruébalo por FTP y ajusta.
+          # Raíz web del hosting. Sin verificar todavía: en Arsys suele ser "/"
+          # pero según el plan puede ser "/htdocs/" o "/web/". Si el run acaba
+          # en verde y la web no cambia, es que los archivos han aterrizado
+          # fuera del directorio público y hay que corregir esta ruta.
           server-dir: /
           # Sincronización incremental: la acción guarda un state file en el
           # servidor y en los siguientes deploys solo sube lo que ha cambiado.
