@@ -34,54 +34,6 @@ jobs:
       - name: Compilar CSS
         run: npm run build
 
-      # PASO TEMPORAL de diagnóstico: localiza la raíz web real del hosting.
-      # El deploy fallaba con "550 Failed to change directory" porque
-      # server-dir: / no es el directorio público. Esto lo averigua en vez de
-      # adivinarlo. Eliminar este paso una vez fijada la ruta correcta.
-      - name: Localizar la raiz web
-        continue-on-error: true
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          listar() {
-            curl -s --connect-timeout 20 --max-time 45 \
-                 --user "$FTP_USERNAME:$FTP_PASSWORD" \
-                 "ftp://$FTP_SERVER$1" 2>/dev/null || true
-          }
-
-          echo "=================== Contenido de / ==================="
-          RAIZ=$(listar "/")
-          if [ -z "$RAIZ" ]; then
-            echo "(vacio o sin permiso de listado)"
-          else
-            echo "$RAIZ"
-          fi
-
-          echo
-          echo "=========== Buscando el directorio publico ==========="
-          # Nombres habituales de raiz web en hostings compartidos.
-          for d in htdocs web www public_html httpdocs html httpsdocs public; do
-            OUT=$(listar "/$d/")
-            if [ -n "$OUT" ]; then
-              echo
-              echo "--- /$d/ existe y contiene:"
-              echo "$OUT" | sed 's/^/      /'
-              if echo "$OUT" | grep -q 'index\.html'; then
-                echo
-                echo "  >>> AQUI ESTA index.html. Pon en el workflow:"
-                echo "  >>>     server-dir: /$d/"
-              fi
-            fi
-          done
-
-          echo
-          echo "======================================================"
-          echo "Si no aparece ningun directorio, tu usuario FTP esta"
-          echo "anclado a una carpeta equivocada o vacia: revisa en el"
-          echo "panel de Arsys a que ruta apunta ese usuario."
-
       - name: Subir por FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -104,11 +56,11 @@ jobs:
           # acción no sirve: SamKirkland/FTP-Deploy-Action no habla SFTP.
           protocol: ftp
           local-dir: ./
-          # Raíz web del hosting. Sin verificar todavía: en Arsys suele ser "/"
-          # pero según el plan puede ser "/htdocs/" o "/web/". Si el run acaba
-          # en verde y la web no cambia, es que los archivos han aterrizado
-          # fuera del directorio público y hay que corregir esta ruta.
-          server-dir: /
+          # Raíz web verificada por FTP: el usuario aterriza en la raíz de la
+          # cuenta, que contiene cgi-bin/, data/, errors/, html/, logs/ y tmp/.
+          # El index.html vive en html/, y esa raíz no es escribible: por eso
+          # server-dir: / daba "550 Failed to change directory".
+          server-dir: /html/
           # Sincronización incremental: la acción guarda un state file en el
           # servidor y en los siguientes deploys solo sube lo que ha cambiado.
           # El .htaccess bloquea los .json, así que no queda expuesto.
