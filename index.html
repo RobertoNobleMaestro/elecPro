@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ELEC PRO · Boletines eléctricos y urgencias 24h en Barcelona</title>
+    <title>Boletines eléctricos y urgencias 24h en Barcelona · ELEC PRO</title>
     <meta
       name="description"
       content="Electricistas autorizados en Barcelona. Boletines eléctricos (CIE), instalaciones, urgencias 24h, cuadros eléctricos y altas de luz. Servicio rápido, seguro y profesional. Presupuesto sin compromiso."
@@ -11,14 +11,26 @@
     <meta name="theme-color" content="#0c2545" />
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
 
-    <!-- Open Graph -->
+    <!-- Una sola URL oficial para esta página: evita que el mismo contenido se
+         indexe por duplicado bajo www/no-www, http/https o con ?utm_… -->
+    <link rel="canonical" href="https://flotul.es/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Open Graph · las URLs deben ser ABSOLUTAS: quien las consume
+         (WhatsApp, Facebook, LinkedIn) no tiene tu documento como base -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://flotul.es/" />
+    <meta property="og:site_name" content="ELEC PRO" />
+    <meta property="og:locale" content="es_ES" />
     <meta property="og:title" content="ELEC PRO · Electricistas autorizados en Barcelona" />
     <meta
       property="og:description"
       content="Boletines eléctricos, instalaciones y urgencias 24h. Rápidos, profesionales y de confianza."
     />
-    <meta property="og:image" content="assets/img/hero-panel.svg" />
+    <!-- TODO: sustituir por un PNG/JPG de 1200×630. WhatsApp y Facebook NO
+         renderizan SVG, así que hoy el enlace se comparte sin imagen. -->
+    <meta property="og:image" content="https://flotul.es/assets/img/hero-panel.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,24 +48,56 @@
       document.documentElement.classList.add('js');
     </script>
 
-    <!-- LocalBusiness structured data -->
+    <!-- LocalBusiness structured data (schema.org/Electrician).
+         PENDIENTE de datos reales del negocio:
+           · streetAddress + postalCode  → sin dirección verificable no hay ficha local
+           · sameAs                      → URL de la ficha de Google Business Profile
+           · aggregateRating             → SOLO cuando haya reseñas propias reales.
+                                           Se ha retirado el 4,9/120 inventado: Google
+                                           ignora el rating auto-declarado y, si detecta
+                                           que imita reseñas de Google, es acción manual. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Electrician",
+        "@id": "https://flotul.es/#business",
         "name": "ELEC PRO",
-        "image": "assets/img/hero-panel.svg",
+        "url": "https://flotul.es/",
+        "image": "https://flotul.es/assets/img/hero-panel.svg",
         "telephone": "+34642898520",
         "email": "boletinesf@gmail.com",
-        "areaServed": "Barcelona",
-        "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressCountry": "ES" },
+        "priceRange": "€€",
+        "currenciesAccepted": "EUR",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Barcelona",
+          "addressRegion": "Barcelona",
+          "addressCountry": "ES"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Barcelona" },
+          { "@type": "City", "name": "L'Hospitalet de Llobregat" },
+          { "@type": "City", "name": "Badalona" },
+          { "@type": "City", "name": "Sant Cugat del Vallès" }
+        ],
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
           "opens": "00:00",
           "closes": "23:59"
         },
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "120" }
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servicios eléctricos",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Boletines eléctricos (CIE)" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Urgencias eléctricas 24h" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalaciones eléctricas" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparación de averías y cortocircuitos" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cuadros eléctricos" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Altas de luz" } }
+          ]
+        }
       }
     </script>
   </head>
@@ -152,7 +196,7 @@
             </span>
 
             <h1 class="hero__title reveal" style="--i: 1">
-              Boletines eléctricos<br />y <b>urgencias 24h</b>
+              Boletines eléctricos<br />y <b>urgencias 24h</b><br />en Barcelona
             </h1>
 
             <p class="hero__lead reveal" style="--i: 2">

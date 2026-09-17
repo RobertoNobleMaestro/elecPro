@@ -1,0 +1,117 @@
+name: Deploy a Arsys
+
+# Cada push a main compila el SCSS y sube el sitio por FTP.
+# workflow_dispatch permite lanzarlo a mano desde la pestaña Actions.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Evita que dos deploys corran a la vez y se pisen en el servidor.
+concurrency:
+  group: deploy-produccion
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el repo
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      # Recompila dist/css/main.css desde el SCSS. Así lo que se publica
+      # siempre corresponde al código fuente, aunque olvides compilar en local.
+      - name: Compilar CSS
+        run: npm run build
+
+      - name: Subir por FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # FTP plano manda la contraseña en texto claro. Si Arsys te da error
+          # de conexión, cambia a "ftp" y avísame, pero prueba ftps primero.
+          protocol: ftps
+          local-dir: ./
+          # Raíz web del hosting. En Arsys suele ser "/" pero según el plan
+          # puede ser "/htdocs/" o "/web/". Compruébalo por FTP y ajusta.
+          server-dir: /
+          # Sincronización incremental: la acción guarda un state file en el
+          # servidor y en los siguientes deploys solo sube lo que ha cambiado.
+          # El .htaccess bloquea los .json, así que no queda expuesto.
+          exclude:
+            # --- Control de versiones y CI ---
+            - '**/.git*'
+            - '**/.git*/**'
+            - '.github/**'
+            # --- Dependencias y build ---
+            - '**/node_modules/**'
+            - 'package.json'
+            - 'package-lock.json'
+            # --- Fuentes que NO van al servidor ---
+            # OJO: solo src/scss. src/js SÍ se publica, el navegador lo carga
+            # como ES Modules desde index.html.
+            - 'src/scss/**'
+            - '**/*.map'
+            # --- Documentación y restos ---
+            - 'README.md'
+            - 'CNAME'
+
+      # Comprobación automática tras el deploy.
+      # Solo falla si el sitio se ha roto de verdad; lo demás son avisos,
+      # porque depende de módulos de Apache que quizá Arsys no tenga activos.
+      - name: Verificar el sitio publicado
+        run: |
+          FALLOS=0
+          AVISOS=0
+
+          echo "→ La home debe responder 200"
+          CODE=$(curl -s -o /dev/null -w '%{http_code}' -m 20 https://flotul.es/)
+          echo "   https://flotul.es/ -> $CODE"
+          if [ "$CODE" != "200" ]; then
+            echo "   ERROR: el sitio no responde correctamente."
+            FALLOS=$((FALLOS+1))
+          fi
+
+          echo "→ robots.txt y sitemap.xml deben ser accesibles"
+          for f in robots.txt sitemap.xml; do
+            C=$(curl -s -o /dev/null -w '%{http_code}' -m 20 "https://flotul.es/$f")
+            echo "   /$f -> $C"
+            if [ "$C" != "200" ]; then
+              echo "   ERROR: /$f no accesible. Google no podrá rastrear el sitemap."
+              FALLOS=$((FALLOS+1))
+            fi
+          done
+
+          echo "→ www debería redirigir con 301 (mod_rewrite + .htaccess)"
+          W=$(curl -s -o /dev/null -w '%{http_code}' -m 20 https://www.flotul.es/)
+          echo "   https://www.flotul.es/ -> $W"
+          if [ "$W" != "301" ]; then
+            echo "   AVISO: se esperaba 301. Comprueba que .htaccess ha subido"
+            echo "          (los clientes FTP suelen ocultar los archivos con punto)."
+            AVISOS=$((AVISOS+1))
+          fi
+
+          echo "→ el HTML debería servirse comprimido (mod_deflate)"
+          ENC=$(curl -s -m 20 --compressed -o /dev/null -D - https://flotul.es/ \
+                | tr -d '\r' | grep -i '^content-encoding:' || true)
+          echo "   ${ENC:-sin cabecera Content-Encoding}"
+          if [ -z "$ENC" ]; then
+            echo "   AVISO: sin compresión. Pide a Arsys que active mod_deflate."
+            AVISOS=$((AVISOS+1))
+          fi
+
+          echo "----------------------------------------"
+          echo "Errores: $FALLOS · Avisos: $AVISOS"
+          [ "$FALLOS" -eq 0 ] || exit 1

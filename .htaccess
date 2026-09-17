@@ -1,0 +1,89 @@
+# ============================================================================
+#  flotul.es — configuración Apache (Arsys, hosting Linux)
+#  Subir a la raíz del hosting, junto a index.html.
+#  Tras subirlo: comprobar que la web carga y que no hay bucle de redirección.
+# ============================================================================
+
+# ---------------------------------------------------------------------------
+# 1) Canonicalización de dominio
+#    Hoy flotul.es y www.flotul.es devuelven ambos 200 con el mismo contenido:
+#    para Google son dos sitios idénticos y reparte la autoridad entre los dos.
+#    Esta regla manda www -> apex con un 301 permanente.
+#
+#    No fuerza http -> https porque Arsys ya lo hace (responde 302). Conviene
+#    cambiarlo a 301 desde el panel de Arsys; un 302 le dice a Google que la
+#    redirección es temporal y no consolida la autoridad en la URL final.
+# ---------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# 2) Compresión — ahora mismo no hay ninguna.
+#    36 KB de HTML + 36 KB de CSS viajan en crudo; con gzip bajan a ~15 KB.
+#    Impacto directo en LCP, que es factor de ranking (Core Web Vitals).
+# ---------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# 3) Cache del navegador.
+#    El HTML NO se cachea (debe reflejar cambios al instante).
+#    Los estáticos sí, porque solo cambian cuando redespliegas.
+# ---------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType image/png                 "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# 4) MIME types y codificación
+# ---------------------------------------------------------------------------
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddType application/xml            .xml
+  AddType image/svg+xml              .svg
+  AddType font/woff2                 .woff2
+  AddType application/manifest+json  .webmanifest
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# 5) Cabeceras de seguridad (no son SEO, pero son gratis)
+# ---------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# 6) Página 404 propia.
+#    Descomentar cuando exista /404.html. Importante: debe devolver un 404 real,
+#    no redirigir a la home — Google llama a eso "soft 404" y lo penaliza.
+# ---------------------------------------------------------------------------
+# ErrorDocument 404 /404.html
+
+# ---------------------------------------------------------------------------
+# 7) No servir ficheros de desarrollo
+# ---------------------------------------------------------------------------
+<FilesMatch "\.(map|scss|json|md)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>
+<Files "package.json">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</Files>

@@ -1,0 +1,7 @@
+# Todo el sitio es indexable.
+# No bloqueamos /src/ ni /dist/: Google necesita descargar el CSS y los ES Modules
+# para renderizar la página como la ve un usuario. Bloquearlos = penalización.
+User-agent: *
+Allow: /
+
+Sitemap: https://flotul.es/sitemap.xml
