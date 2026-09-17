@@ -32,13 +32,14 @@
     <meta property="og:image" content="https://flotul.es/assets/img/hero-panel.svg" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts · autoalojadas, ver src/scss/base/_fonts.scss
+         Se precargan solo las dos que pinta el hero: el navegador descubriría
+         las @font-face al final de main.css, y sin esto la primera pintada
+         llegaría con la tipografía de sistema. Las otras dos (Poppins 600 y
+         700) aparecen más abajo en la página y no compensa precargarlas:
+         competirían por ancho de banda con el LCP. -->
+    <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/poppins-800-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Styles -->
     <link rel="stylesheet" href="dist/css/main.css" />

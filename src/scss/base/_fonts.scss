@@ -1,0 +1,73 @@
+// =============================================================
+// base/fonts
+// =============================================================
+// Self-hosted instead of loaded from fonts.googleapis.com. Two reasons:
+//
+//   1. Speed. The Google Fonts <link> was a render-blocking stylesheet on a
+//      third-party origin: the browser had to resolve DNS, open a TLS
+//      connection, fetch the CSS and only then discover the font URLs on a
+//      *second* origin (fonts.gstatic.com). Served from our own domain the
+//      files are already on an open connection, which is the single biggest
+//      win available on the LCP of this page.
+//   2. Privacy. Requesting the fonts from Google sent every visitor's IP
+//      address to a third party on page load.
+//
+// Only the `latin` subset is shipped: U+0000-00FF covers every accent used in
+// Spanish and Catalan (á é í ó ú ñ ü à è ò ç ï and the · middle dot).
+// `latin-ext` exists for Polish, Czech or Turkish and would double the
+// payload for characters this site never renders.
+//
+// Inter ships as a single variable file covering 400-700, so its four weights
+// cost one request. Poppins has no variable build on Google Fonts, so its
+// three weights (600, 700, 800) are separate static files.
+//
+// Both families are licensed under the SIL Open Font License 1.1, which
+// permits self-hosting and requires the licence to travel with the files:
+// see assets/fonts/OFL.txt.
+
+// font-display: swap renders the fallback immediately and swaps when the
+// webfont lands, so text is never invisible while a font downloads.
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../../assets/fonts/inter-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../../assets/fonts/poppins-600-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../../assets/fonts/poppins-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../../assets/fonts/poppins-800-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}

@@ -6,7 +6,8 @@
 // 1) Abstracts — definitions only, no CSS output
 @use 'abstracts';
 
-// 2) Base — reset, tokens, typography, globals, a11y
+// 2) Base — fonts, reset, tokens, typography, globals, a11y
+@use 'base/fonts';
 @use 'base/reset';
 @use 'base/root';
 @use 'base/typography';
