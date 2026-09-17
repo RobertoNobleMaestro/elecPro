@@ -1,9 +1,9 @@
 // Highlight the nav link of the section currently in view.
 //
 // Scroll-position based (not IntersectionObserver) so that EXACTLY ONE link is
-// ever active — robust even when a spy target (#contacto) is nested inside
-// another (#opiniones), or when nav order differs from DOM order
-// (e.g. "Urgencias 24h" sits after "Sobre nosotros" in the document).
+// ever active — robust when nav order differs from DOM order (e.g.
+// "Urgencias 24h" sits after "Sobre nosotros" in the document) and when spy
+// targets are nested inside one another.
 
 export function initScrollspy() {
   const links = Array.from(document.querySelectorAll('[data-spy]'));

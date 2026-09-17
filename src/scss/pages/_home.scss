@@ -17,30 +17,19 @@
   margin-top: var(--space-6);
 }
 
-// Two-column reviews + quote form
+// Quote form, single column.
+// This used to be a two-column grid with the reviews carousel alongside. With
+// the reviews gone the form is centred and capped: spanning the full container
+// on desktop makes it awkward to read and to fill in.
 .contact__grid {
   @include container;
   display: grid;
-  gap: var(--space-6);
-  align-items: start;
-  // minmax(0, …) instead of the implicit `auto`/`fr` (which resolve to a min
-  // of max-content) so the column can shrink and the reviews carousel scrolls
-  // internally instead of blowing out the page width.
-  grid-template-columns: minmax(0, 1fr);
-
-  @include respond-to('lg') {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: var(--space-7);
-  }
+  justify-items: center;
 }
 
-// Pull the quote form up a touch on desktop for visual balance.
-// min-width: 0 lets this grid item shrink so the inner reviews carousel
-// (overflow-x: auto) scrolls internally instead of widening the whole page.
-.contact__reviews {
-  display: grid;
-  gap: var(--space-4);
-  min-width: 0;
+.contact__grid > .quote {
+  width: 100%;
+  max-width: 46rem;
 }
 
 // Trust strip under the services (from the light variant)

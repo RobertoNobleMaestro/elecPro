@@ -2,7 +2,6 @@
 import { initNav } from './modules/nav.js';
 import { initScrollspy } from './modules/scrollspy.js';
 import { initReveal } from './modules/reveal.js';
-import { initReviews } from './modules/reviews.js';
 import { initForm } from './modules/form.js';
 import { initFloating } from './modules/floating.js';
 
@@ -10,7 +9,6 @@ function init() {
   initNav();
   initScrollspy();
   initReveal();
-  initReviews();
   initForm();
   initFloating();
 
