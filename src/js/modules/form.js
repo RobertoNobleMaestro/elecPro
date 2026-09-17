@@ -1,4 +1,4 @@
-// Quote form: client-side validation, accessible errors, simulated submit.
+// Quote form: client-side validation, accessible errors, submit to contact.php.
 
 import { showToast } from './toast.js';
 
@@ -48,9 +48,18 @@ function validateField(control) {
   return showError(control, rule(value, control));
 }
 
+// Marca el instante en que quedó listo el formulario. contact.php descarta
+// los envíos inmediatos, que delatan un bot rellenando por POST directo.
+function stamp(form) {
+  const field = form.elements.ts;
+  if (field) field.value = String(Date.now());
+}
+
 export function initForm() {
   const form = document.querySelector('[data-quote-form]');
   if (!form) return;
+
+  stamp(form);
 
   const controls = Array.from(form.elements).filter((el) => validators[el.name]);
 
@@ -84,26 +93,70 @@ export function initForm() {
       return;
     }
 
-    // Simulated async submit (replace with a real fetch to your backend).
     const submitBtn = form.querySelector('[type="submit"]');
     submitBtn?.classList.add('is-loading');
     submitBtn?.setAttribute('aria-busy', 'true');
 
-    await new Promise((res) => setTimeout(res, 1100));
-
-    submitBtn?.classList.remove('is-loading');
-    submitBtn?.removeAttribute('aria-busy');
-
+    // El nombre se lee antes del reset() para el mensaje de agradecimiento.
     const name = form.elements.name?.value.trim().split(' ')[0] || '';
-    showToast({
-      title: '¡Solicitud enviada!',
-      message: `Gracias${name ? ', ' + name : ''}. Te responderemos en menos de 24 h.`,
-    });
 
-    form.reset();
-    form.querySelectorAll('.is-valid, .is-invalid').forEach((el) =>
-      el.classList.remove('is-valid', 'is-invalid')
-    );
-    form.querySelectorAll('.field__error').forEach((el) => (el.textContent = ''));
+    try {
+      const response = await fetch(form.action || 'contact.php', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+
+      // El servidor siempre responde JSON, pero si algo va mal en el hosting
+      // puede llegar HTML de una página de error: no debe romper el handler.
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        // 422: la validación de servidor ha rechazado campos concretos.
+        // Se pintan en su sitio para que el usuario vea qué corregir.
+        if (data.errores) {
+          let first = null;
+          Object.entries(data.errores).forEach(([field, message]) => {
+            const control = form.elements[field];
+            if (control) {
+              showError(control, message);
+              if (!first) first = control;
+            }
+          });
+          first?.focus();
+        }
+
+        showToast({
+          type: 'error',
+          title: 'No se ha podido enviar',
+          message:
+            data.error || 'Revisa los datos e inténtalo de nuevo.',
+        });
+        return;
+      }
+
+      showToast({
+        title: '¡Solicitud enviada!',
+        message: `Gracias${name ? ', ' + name : ''}. Te responderemos en menos de 24 h.`,
+      });
+
+      form.reset();
+      form.querySelectorAll('.is-valid, .is-invalid').forEach((el) =>
+        el.classList.remove('is-valid', 'is-invalid')
+      );
+      form.querySelectorAll('.field__error').forEach((el) => (el.textContent = ''));
+      stamp(form);
+    } catch {
+      // Sin conexión o el servidor no responde. Se ofrecen las vías directas
+      // en lugar de dejar al usuario sin saber qué ha pasado.
+      showToast({
+        type: 'error',
+        title: 'Sin conexión con el servidor',
+        message: 'Llámanos al 642 898 520 o escríbenos por WhatsApp.',
+      });
+    } finally {
+      submitBtn?.classList.remove('is-loading');
+      submitBtn?.removeAttribute('aria-busy');
+    }
   });
 }

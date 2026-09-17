@@ -134,3 +134,15 @@ select.field__control option {
   color: var(--color-yellow);
   text-decoration: underline;
 }
+
+// Trampa antispam. Se saca de pantalla en lugar de usar display:none porque
+// hay bots que ignoran los campos con display:none y en cambio rellenan
+// este. El aria-hidden y el tabindex="-1" del HTML lo mantienen fuera del
+// alcance de los lectores de pantalla y de la navegación por teclado.
+.form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

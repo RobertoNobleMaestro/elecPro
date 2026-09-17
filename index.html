@@ -504,7 +504,18 @@
             <h2 class="quote__title">Solicita tu presupuesto</h2>
             <p class="quote__sub">Rápido, gratuito y sin compromiso. Te respondemos en menos de 24 h.</p>
 
-            <form class="form" data-quote-form novalidate>
+            <form class="form" data-quote-form action="contact.php" method="post" novalidate>
+              <!-- Antispam. El honeypot lo oculta .form__trap en el CSS: un
+                   humano no lo ve, un bot lo rellena y contact.php descarta
+                   el envío. "ts" lo sella el JS al cargar, para detectar los
+                   envíos instantáneos. Ninguno de los dos sustituye a la
+                   validación de servidor, solo filtran ruido. -->
+              <div class="form__trap" aria-hidden="true">
+                <label for="f-website">No rellenar</label>
+                <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+              <input type="hidden" name="ts" value="0" />
+
               <div class="form__row">
                 <div class="field">
                   <label class="field__label" for="f-name">Nombre <span class="req" aria-hidden="true">*</span></label>

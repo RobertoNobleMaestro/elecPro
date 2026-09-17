@@ -77,7 +77,10 @@ AddDefaultCharset UTF-8
 # ---------------------------------------------------------------------------
 # 7) No servir ficheros de desarrollo
 # ---------------------------------------------------------------------------
-<FilesMatch "\.(map|scss|json|md)$">
+# El .log incluye el respaldo de solicitudes (datos personales). Se escribe
+# fuera de la raíz web, así que esto es solo una segunda barrera por si
+# algún día cambia la ruta.
+<FilesMatch "\.(map|scss|json|md|log)$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
