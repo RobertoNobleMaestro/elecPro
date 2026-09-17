@@ -1,0 +1,13 @@
+# Normaliza los finales de línea a LF en el repositorio.
+# Importante para el deploy: Apache puede devolver un 500 si el .htaccess
+# llega con CRLF, y el workflow sube los archivos tal cual salen del checkout.
+* text=auto eol=lf
+
+# Binarios: que Git no los toque.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
